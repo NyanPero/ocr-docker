@@ -101,8 +101,6 @@ def extract_info(jsonl_path, out_dir):
 
                             phone_results.append(results.group())
                 # ここからpathを書く
-                if not os.path.exists(out_dir):
-                    os.mkdir(out_dir)
                 mail_dir = out_dir + 'mail/'
                 url_dir = out_dir + 'url/'
                 domain_dir = out_dir + 'domain/'
@@ -115,24 +113,32 @@ def extract_info(jsonl_path, out_dir):
                 detect_flag = False
                 if mail_results:
                     detect_flag = True
+                    if not os.path.exists(out_dir):
+                        os.mkdir(out_dir)
                     if not os.path.exists(mail_dir):
                         os.mkdir(mail_dir)
                     with open(mail_path,'w') as f:
                         f.write('\n'.join(list(set(mail_results))))
                 if url_results:
                     detect_flag = True
+                    if not os.path.exists(out_dir):
+                        os.mkdir(out_dir)
                     if not os.path.exists(url_dir):
                         os.mkdir(url_dir)
                     with open(url_path, 'w') as f:
                         f.write('\n'.join(list(set(url_results))))
                 if domain_results:
                     detect_flag = True
+                    if not os.path.exists(out_dir):
+                        os.mkdir(out_dir)
                     if not os.path.exists(domain_dir):
                         os.mkdir(domain_dir)
                     with open(domain_path, 'w') as f:
                         f.write('\n'.join(list(set(domain_results))))
                 if phone_results:
                     detect_flag = True
+                    if not os.path.exists(out_dir):
+                        os.mkdir(out_dir)
                     if not os.path.exists(phone_dir):
                         os.mkdir(phone_dir)
                     with open(phone_path, 'w') as f:
