@@ -59,6 +59,8 @@ def extract_info(jsonl_path, out_dir):
                         if 'No whois server is known for tihs kind of object.' not in cmd_result:
                             if mail_domain not in white_list[0]:
                                 mail_results.append(results.group())
+                                if not os.path.exists(out_dir):
+                                    os.mkdir(out_dir)
                                 if not os.path.exists(image_dir):
                                     os.mkdir(image_dir)
                                 image_dir = out_dir + 'image/'
@@ -72,6 +74,8 @@ def extract_info(jsonl_path, out_dir):
                         if 'No whois server is known for this kind of object.' not in cmd_result:
                             if url_domain not in white_list[0]:
                                 url_results.append(results.group())
+                                if not os.path.exists(out_dir):
+                                    os.mkdir(out_dir)
                                 if not os.path.exists(image_dir):
                                     os.mkdir(image_dir)
                                 image_dir = out_dir + 'image/'
@@ -84,6 +88,8 @@ def extract_info(jsonl_path, out_dir):
                         if 'No whois server is known for this kind of object.' not in cmd_result:
                             if results.group() not in white_list[0]:
                                 domain_results.append(results.group())
+                                if not os.path.exists(out_dir):
+                                    os.mkdir(out_dir)
                                 image_dir = out_dir + 'image/'
                                 if not os.path.exists(image_dir):
                                     os.mkdir(image_dir)
@@ -93,6 +99,8 @@ def extract_info(jsonl_path, out_dir):
                     results = phone_pattern.search(extract_text)
                     if results:
                         if results.group() not in white_list[1]:
+                            if not os.path.exists(out_dir):
+                                os.mkdir(out_dir)
                             image_dir = out_dir + 'image/'
                             if not os.path.exists(image_dir):
                                 os.mkdir(image_dir)
@@ -113,32 +121,24 @@ def extract_info(jsonl_path, out_dir):
                 detect_flag = False
                 if mail_results:
                     detect_flag = True
-                    if not os.path.exists(out_dir):
-                        os.mkdir(out_dir)
                     if not os.path.exists(mail_dir):
                         os.mkdir(mail_dir)
                     with open(mail_path,'w') as f:
                         f.write('\n'.join(list(set(mail_results))))
                 if url_results:
                     detect_flag = True
-                    if not os.path.exists(out_dir):
-                        os.mkdir(out_dir)
                     if not os.path.exists(url_dir):
                         os.mkdir(url_dir)
                     with open(url_path, 'w') as f:
                         f.write('\n'.join(list(set(url_results))))
                 if domain_results:
                     detect_flag = True
-                    if not os.path.exists(out_dir):
-                        os.mkdir(out_dir)
                     if not os.path.exists(domain_dir):
                         os.mkdir(domain_dir)
                     with open(domain_path, 'w') as f:
                         f.write('\n'.join(list(set(domain_results))))
                 if phone_results:
                     detect_flag = True
-                    if not os.path.exists(out_dir):
-                        os.mkdir(out_dir)
                     if not os.path.exists(phone_dir):
                         os.mkdir(phone_dir)
                     with open(phone_path, 'w') as f:
