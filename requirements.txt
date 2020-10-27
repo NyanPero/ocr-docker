@@ -1,0 +1,5 @@
+pyocr==0.7.2
+opencv-python==4.4.0.44
+numpy
+requests
+pandas
