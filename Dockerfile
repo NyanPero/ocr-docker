@@ -13,4 +13,4 @@ RUN apt update -y && \
 
 COPY /src /app
 
-CMD ["python", "/app/main.py", "-d", "/app/domain.txt", "-p", "/app/phone.txt", "-j", "/app/*.jsonl", "-o", "/app/out/", "-s", "600000"]
+CMD ["python", "/app/main.py", "-d", "/app/domain.txt", "-p", "/app/phone.txt", "-j", "/app/*.jsonl", "-o", "/app/", "-s", "600000"]

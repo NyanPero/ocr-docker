@@ -18,9 +18,10 @@ import datetime
 def extract_info(jsonl_path, out_dir):
     df = pd.read_json(jsonl_path, orient='records', lines=True)
     media_df = df[~df['media'].isnull()]
+    print (media_df)
     tool = pyocr.get_available_tools()[0]
     for index_tweet,row in enumerate(media_df.itertuples()):
-        print (index_tweet)
+        print (index_tweet, row)
         if not row.media:
             continue
         tw_id = str(row.id)
@@ -142,7 +143,9 @@ def extract_info(jsonl_path, out_dir):
                         os.mkdir(json_dir)
                     json_path = json_dir + '{}.json'.format(tw_id)
                     media_df[media_df['id'] == int(tw_id)].to_json(json_path)
-
+                    print ('Detected')
+                else:
+                    print ('Not Detected')
             except:
                 import traceback
                 traceback.print_exc()
