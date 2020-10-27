@@ -187,4 +187,5 @@ if __name__ == "__main__":
             check_json_list.append(json_name)
     print (check_json_list)
     for check_json_path in check_json_list:
-        extract_info(check_json_path, out_path)
+        if os.stat(check_json_path).st_size > 0:
+            extract_info(check_json_path, out_path)
