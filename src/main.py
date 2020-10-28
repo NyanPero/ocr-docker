@@ -171,7 +171,7 @@ if __name__ == "__main__":
     # out_path
     parser.add_argument('-o','--out')
     # check_minutes
-    parser.add_argument('-s', '--seconds', type=int, default=9000)
+    parser.add_argument('-s', '--seconds', type=int, default=900)
     args = parser.parse_args()
     white_list_path = [args.domain, args.phone]
     white_list = []
