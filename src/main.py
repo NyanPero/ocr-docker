@@ -56,7 +56,7 @@ def extract_info(jsonl_path, out_dir):
                     if results:
                         mail_domain = results.group().split("@")[1]
                         cmd_result = subprocess.run(["whois", mail_domain], stdout=subprocess.PIPE).stdout.decode("utf-8")
-                        if 'No whois server is known for tihs kind of object.' not in cmd_result:
+                        if 'No whois server is known for this kind of object.' not in cmd_result:
                             if mail_domain not in white_list[0]:
                                 mail_results.append(results.group())
                                 if not os.path.exists(out_dir):
