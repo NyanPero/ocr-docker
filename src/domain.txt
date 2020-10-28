@@ -14,3 +14,4 @@ www.mydocomo.com
 mydocomo.com
 amazon.co.jp
 nttxstore.jp
+spmode.smt.docomo.ne.jp
