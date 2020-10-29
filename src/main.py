@@ -56,7 +56,7 @@ def extract_info(jsonl_path, out_dir):
                     if results:
                         mail_domain = results.group().split("@")[1]
                         cmd_result = subprocess.run(["whois", mail_domain], stdout=subprocess.PIPE).stdout.decode("utf-8")
-                        if ('No Object Found' not in cmd_result) and ('No whois server is known for this kind of object.' not in cmd_result):
+                        if ('No match for' not in cmd_result) and ('This TLD has no whois server.' not in cmd_result) and ('No Object Found' not in cmd_result) and ('No whois server is known for this kind of object.' not in cmd_result):
                             if mail_domain not in white_list[0]:
                                 mail_results.append(results.group())
                                 if not os.path.exists(out_dir):
@@ -71,7 +71,7 @@ def extract_info(jsonl_path, out_dir):
                     if results:
                         url_domain = results.group().split("/")[2]
                         cmd_result = subprocess.run(["whois",url_domain], stdout=subprocess.PIPE).stdout.decode("utf-8")
-                        if ('No Obeject Found' not in cmd_result) and ('No whois server is known for this kind of object.' not in cmd_result):
+                        if ('No match for' not in cmd_result) and ('This TLD has no whois server.' not in cmd_result) and ('No Obeject Found' not in cmd_result) and ('No whois server is known for this kind of object.' not in cmd_result):
                             if url_domain not in white_list[0]:
                                 url_results.append(results.group())
                                 if not os.path.exists(out_dir):
@@ -85,7 +85,7 @@ def extract_info(jsonl_path, out_dir):
                     results = domain_pattern.search(extract_text)
                     if results:
                         cmd_result = subprocess.run(["whois",results.group()], stdout=subprocess.PIPE).stdout.decode("utf-8")
-                        if ('No Object Found' not in cmd_result) and ('No whois server is known for this kind of object.' not in cmd_result):
+                        if ('No match for' not in cmd_result) and ('This TLD has no whois server.' not in cmd_result) and ('No Object Found' not in cmd_result) and ('No whois server is known for this kind of object.' not in cmd_result):
                             if results.group() not in white_list[0]:
                                 domain_results.append(results.group())
                                 if not os.path.exists(out_dir):
