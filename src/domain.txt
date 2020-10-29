@@ -16,3 +16,5 @@ amazon.co.jp
 nttxstore.jp
 spmode.smt.docomo.ne.jp
 facebook.com
+kurashi.yahoo.co.jp
+avex.jp
